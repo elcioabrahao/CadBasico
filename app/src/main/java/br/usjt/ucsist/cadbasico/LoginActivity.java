@@ -10,6 +10,8 @@ import java.util.logging.Logger;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Elcio Está modificando aqui
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
