@@ -5,17 +5,55 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.orhanobut.hawk.Hawk;
 
 import java.util.logging.Logger;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // Elcio Está modificando aqui
+    private TextView textViewNovoCadastro;
+    private Button buttonLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Hawk.init(this).build();
+
+        textViewNovoCadastro = findViewById(R.id.textViewNovoCadastro);
+        buttonLogin = findViewById(R.id.buttonLogin);
+
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(Hawk.contains("tem_cadastro")){
+            if(Hawk.get("tem_cadastro")){
+                habilitarLogin();
+            }else{
+                desabilitarLogin();
+            }
+
+        }else{
+            desabilitarLogin();
+        }
+    }
+
+    private void habilitarLogin(){
+        textViewNovoCadastro.setVisibility(View.GONE);
+        buttonLogin.setEnabled(true);
+        buttonLogin.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+    }
+
+    private void desabilitarLogin(){
+        textViewNovoCadastro.setVisibility(View.VISIBLE);
+        buttonLogin.setEnabled(false);
+        buttonLogin.setBackgroundColor(getColor(R.color.gray));
     }
 
     public void novoCadastro(View view) {
