@@ -4,7 +4,7 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/editarr"
+        android:id="@+id/editar"
         android:icon="@drawable/ic_editar"
         app:showAsAction="always|withText"
         android:title="Sair"/>
