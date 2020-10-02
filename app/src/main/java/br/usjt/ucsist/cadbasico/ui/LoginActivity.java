@@ -1,4 +1,4 @@
-package br.usjt.ucsist.cadbasico;
+package br.usjt.ucsist.cadbasico.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.orhanobut.hawk.Hawk;
 
-import java.util.logging.Logger;
+import br.usjt.ucsist.cadbasico.R;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package br.usjt.ucsist.cadbasico;
+package br.usjt.ucsist.cadbasico.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import br.usjt.ucsist.cadbasico.R;
 
 public class MainActivity extends AppCompatActivity {
 
