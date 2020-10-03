@@ -1,21 +1,32 @@
 package br.usjt.ucsist.cadbasico.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.orhanobut.hawk.Hawk;
 
 import br.usjt.ucsist.cadbasico.R;
+import br.usjt.ucsist.cadbasico.model.Usuario;
+import br.usjt.ucsist.cadbasico.model.UsuarioViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
     private TextView textViewNovoCadastro;
     private Button buttonLogin;
+    private UsuarioViewModel usuarioViewModel;
+    private Usuario usuarioCorrente;
+    private EditText editTextEmail;
+    private EditText editTextSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +34,24 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Hawk.init(this).build();
 
+        editTextEmail = findViewById(R.id.editTextUsuario);
+        editTextSenha = findViewById(R.id.editTextSenha);
+
         textViewNovoCadastro = findViewById(R.id.textViewNovoCadastro);
         buttonLogin = findViewById(R.id.buttonLogin);
 
+        usuarioViewModel = new ViewModelProvider(this).get(UsuarioViewModel.class);
 
+        usuarioViewModel.getUsuario().observe(this, new Observer<Usuario>() {
+            @Override
+            public void onChanged(@Nullable final Usuario usuario) {
+                updateUsuario(usuario);
+            }
+        });
+    }
+
+    private void updateUsuario(Usuario usuario){
+        usuarioCorrente = usuario;
     }
 
     @Override
@@ -62,7 +87,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+
+        if(usuarioCorrente != null){
+            if(usuarioCorrente.getEmail().equalsIgnoreCase(editTextEmail.getText().toString())
+            && usuarioCorrente.getSenha().equals(editTextSenha.getText().toString())){
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(this,"Usuário ou senha invalidos!",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
     }
 }
