@@ -20,5 +20,10 @@
         android:title="Configuração"
         />
 
+    <item android:id="@+id/mapa"
+        android:icon="@drawable/ic_mapa"
+        android:title="Mapa"
+        />
+
 
 </menu>
