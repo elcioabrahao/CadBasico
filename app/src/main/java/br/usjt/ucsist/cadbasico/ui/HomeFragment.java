@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment {
     private ContatoViewModel contatoViewModel;
     private List<Contato> contatos;
     private ContatoAdapter adapter;
+    private ProgressBar progressBar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -63,6 +65,7 @@ public class HomeFragment extends Fragment {
                 if (contatosList != null) {
                     adapter.setResults(contatosList);
                 }
+                progressBar.setVisibility(View.GONE);
             }
         });
 
@@ -87,6 +90,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
+        progressBar = view.findViewById(R.id.progressBar);
 
         return view;
     }
@@ -94,6 +98,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume(){
         super.onResume();
+        progressBar.setVisibility(View.VISIBLE);
         contatoViewModel.getContatos();
     }
 
