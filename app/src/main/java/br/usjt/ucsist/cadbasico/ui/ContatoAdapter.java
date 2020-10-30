@@ -3,6 +3,7 @@ package br.usjt.ucsist.cadbasico.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import br.usjt.ucsist.cadbasico.R;
 import br.usjt.ucsist.cadbasico.model.Contato;
+import br.usjt.ucsist.cadbasico.util.ImageUtil;
 
 public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ContatoHolder> {
     private List<Contato> results = new ArrayList<>();
@@ -34,8 +36,7 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ContatoH
         holder.textViewNome.setText(contato.getNome());
         holder.textViewEmail.setText(contato.getEmail());
         holder.textViewTelefone.setText(contato.getTelefone());
-
-
+        holder.fotoContatoCard.setImageBitmap(ImageUtil.decode(contato.getImagem()));
 
     }
     @Override
@@ -52,6 +53,7 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ContatoH
         private TextView textViewNome;
         private TextView textViewEmail;
         private TextView textViewTelefone;
+        private ImageView fotoContatoCard;
 
 
         public ContatoHolder(@NonNull View itemView) {
@@ -59,6 +61,7 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ContatoH
             textViewNome = itemView.findViewById(R.id.textViewNomeContato);
             textViewEmail = itemView.findViewById(R.id.textViewEmailContato);
             textViewTelefone = itemView.findViewById(R.id.textViewTelefoneContato);
+            fotoContatoCard = itemView.findViewById(R.id.fotoContatoCard);
             itemView.setOnClickListener(this);
         }
 

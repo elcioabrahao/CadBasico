@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>
