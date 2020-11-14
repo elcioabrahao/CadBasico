@@ -36,7 +36,9 @@ public class ContatoAdapter extends RecyclerView.Adapter<ContatoAdapter.ContatoH
         holder.textViewNome.setText(contato.getNome());
         holder.textViewEmail.setText(contato.getEmail());
         holder.textViewTelefone.setText(contato.getTelefone());
-        holder.fotoContatoCard.setImageBitmap(ImageUtil.decode(contato.getImagem()));
+        if(contato.getImagem()!=null){
+            holder.fotoContatoCard.setImageBitmap(ImageUtil.decode(contato.getImagem()));
+        }
 
     }
     @Override

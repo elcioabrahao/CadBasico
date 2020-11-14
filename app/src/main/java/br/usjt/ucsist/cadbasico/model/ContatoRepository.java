@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ContatoRepository {
 
-    private static final String CONTATOS_SERVICE_BASE_URL = "https://crudcrud.com";
+    private static final String CONTATOS_SERVICE_BASE_URL = "http://10.0.2.2:8080";
 
     private ContatoService contatoService;
     private MutableLiveData<List<Contato>> contatosResponseMutableLiveData;
@@ -90,10 +90,10 @@ public class ContatoRepository {
 
     public void alterarContato(Contato contato){
 
-        ContatoPut contatoPut = new ContatoPut(contato.getNome(),contato.getEmail(),
-                contato.getTelefone(), contato.getImagem());
+//        ContatoPut contatoPut = new ContatoPut(contato.getNome(),contato.getEmail(),
+//                contato.getTelefone(), contato.getImagem());
 
-        contatoService.alterarContato(contato.getId(),contatoPut)
+        contatoService.alterarContato(contato.getId(),contato)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -13,22 +13,20 @@ import retrofit2.http.Path;
 
 public interface ContatoService {
 
-    //https://crudcrud.com/api/44cdb2bab6214a2583ce2d74464a6880
-
-    @GET("/api/44cdb2bab6214a2583ce2d74464a6880/contato")
+    @GET("/api/contatos")
     Call<List<Contato>> getAllContatos();
 
-    @POST("/api/44cdb2bab6214a2583ce2d74464a6880/contato")
+    @POST("/api/contato")
     Call<ResponseBody> salvarContato(
             @Body
                     Contato contato);
 
-    @PUT("/api/44cdb2bab6214a2583ce2d74464a6880/contato/{id}")
+    @PUT("/api/contato/{id}")
     Call<ResponseBody> alterarContato(
-            @Path("id") String id,
-            @Body ContatoPut contatoPut);
+            @Path("id") Long id,
+            @Body Contato contato);
 
-    @DELETE("/api/44cdb2bab6214a2583ce2d74464a6880/contato/{id}")
+    @DELETE("/api/contato/{id}")
     Call<ResponseBody> deletarContato(
-            @Path("id") String id);
+            @Path("id") Long id);
 }

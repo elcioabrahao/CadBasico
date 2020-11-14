@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 public class Contato implements Serializable {
 
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
-    private String id;
+    private Long id;
     @SerializedName("nome")
     @Expose
     private String nome;
@@ -31,11 +31,11 @@ public class Contato implements Serializable {
         this.imagem = imagem;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
